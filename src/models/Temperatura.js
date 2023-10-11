@@ -6,7 +6,19 @@ module.exports = (sequelize) => {
       primaryKey:true,
       autoIncrement:true,
     },
-    role: {
+    type:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    name:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    mañana: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    tarde: {
       type: DataTypes.STRING,
       allowNull: true,
     }

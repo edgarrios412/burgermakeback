@@ -1,20 +1,15 @@
 const {Router} = require("express")
 const temperaturaRoutes = Router()
+const {newTemp, getTemp} = require("../controllers/temperaturaController")
 
-temperaturaRoutes.get("/", (req,res) => {
-    res.json({users:"Retorna un array de temperaturas"})
+temperaturaRoutes.get("/", async (req,res) => {
+    const temp = await getTemp()
+    res.json(temp)
 })
 
-temperaturaRoutes.post("/", (req,res) => {
-    res.json({users:"Crea un nuevo temperamento"})
-})
-
-temperaturaRoutes.put("/", (req,res) => {
-    res.json({users:"Edita una temperatura"})
-})
-
-temperaturaRoutes.delete("/", (req,res) => {
-    res.json({users:"Elimina una temperatura"})
+temperaturaRoutes.post("/", async (req,res) => {
+    const temp = await newTemp(req.body)
+    res.json({users:temp})
 })
 
 module.exports = temperaturaRoutes
