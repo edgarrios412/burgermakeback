@@ -7,13 +7,13 @@ userRoutes.get("/", (req,res) => {
 })
 
 userRoutes.post("/verify", async (req,res) => {
-    const user = await verifyUser(req.body)
-    res.json(user)
+    const {status,user,token} = await verifyUser(req.body)
+    res.json({status:status,user:user, token:token})
 })
 
 userRoutes.post("/auth", (req,res) => {
-    const user = authUser(req.body)
-    res.json({status:user})
+    const {status, user} = authUser(req.body)
+    res.json({status:status, user:user})
 })
 
 userRoutes.post("/", async (req,res) => {
