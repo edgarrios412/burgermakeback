@@ -51,5 +51,9 @@ module.exports = {
             return "Contraseña actualizada"
         }
         return "Contraseña anterior invalida"
+    },
+    getUsers: async () => {
+        const users = await User.findAll()
+        return users
     }
 }

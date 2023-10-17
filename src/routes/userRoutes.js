@@ -1,9 +1,10 @@
 const {Router} = require("express")
 const userRoutes = Router()
-const {newUser, verifyUser, authUser, putUser} = require("../controllers/userController")
+const {newUser, verifyUser, authUser, putUser, getUsers} = require("../controllers/userController")
 
-userRoutes.get("/", (req,res) => {
-    res.json({users:"Retorna un array de usuarios"})
+userRoutes.get("/", async (req,res) => {
+    const users = await getUsers()
+    res.json(users)
 })
 
 userRoutes.post("/verify", async (req,res) => {
