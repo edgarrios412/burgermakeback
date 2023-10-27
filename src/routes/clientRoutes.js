@@ -5,17 +5,32 @@ const {getClientId, getClients, createClient} = require("../controllers/clientCo
 clientRoutes.get("/:id", async (req,res) => {
     const {id} = req.params
     if(id !== "all"){
+        try{
         const client = await getClientId(id)
         res.json(client)
+        }
+        catch(error){
+            console.log(error)
+        }
     }else{
+        try{
         const clients = await getClients()
         res.json(clients)
+    }
+    catch(error){
+        console.log(error)
+    }
     }
 })
 
 clientRoutes.post("/", async (req,res) => {
+    try{
     const newClient = await createClient(req.body)
     res.json({status:newClient})
+    }
+    catch(error){
+        console.log(error)
+    }
 })
 
 clientRoutes.put("/", (req,res) => {
