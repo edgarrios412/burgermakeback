@@ -151,6 +151,11 @@ module.exports = (sequelize) => {
     especialista: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    firma:{
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: {},
     }
   },{timestamps:false});
 };
