@@ -145,8 +145,8 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     form: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      type: DataTypes.ARRAY(DataTypes.BOOLEAN), // Definir un array de booleanos
+      defaultValue: [],
     },
     especialista: {
       type: DataTypes.STRING,
