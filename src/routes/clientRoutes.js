@@ -1,10 +1,10 @@
 const {Router} = require("express")
 const clientRoutes = Router()
-const {getClientId, getClients} = require("../controllers/clientController")
+const {getClientId, getClients, createClient} = require("../controllers/clientController")
 
 clientRoutes.get("/:id", async (req,res) => {
     const {id} = req.params
-    if(id){
+    if(id !== "all"){
         const client = await getClientId(id)
         res.json(client)
     }else{
@@ -13,8 +13,9 @@ clientRoutes.get("/:id", async (req,res) => {
     }
 })
 
-clientRoutes.post("/", (req,res) => {
-    res.json({users:"Crea un nuevo paciente"})
+clientRoutes.post("/", async (req,res) => {
+    const newClient = await createClient(req.body)
+    res.json({status:newClient})
 })
 
 clientRoutes.put("/", (req,res) => {

@@ -11,4 +11,8 @@ module.exports = {
         }})
         return client
     },
+    createClient: async (data) => {
+        await Client.create(data)
+        return "Creado con exito"
+    }
 }
