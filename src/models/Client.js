@@ -156,6 +156,15 @@ module.exports = (sequelize) => {
       type: DataTypes.JSON,
       allowNull: true,
       defaultValue: {},
+    },
+    diagrama:{
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: {},
+    },
+    date:{
+      type: DataTypes.DATEONLY,
+      allowNull: true,
     }
   },{timestamps:false});
 };
