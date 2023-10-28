@@ -1,14 +1,16 @@
-const {Client} = require("../db")
+const {Client, Evolucion} = require("../db")
 
 module.exports = {
     getClients: async () => {
-        const clients = await Client.findAll()
+        const clients = await Client.findAll({include: Evolucion})
         return clients
     },
     getClientId: async (data) => {
         const client = await Client.findOne({where:{
             id:data
-        }})
+        },
+        include: Evolucion
+        })
         return client
     },
     createClient: async (data) => {
@@ -26,5 +28,11 @@ module.exports = {
             await client.save()
             return client
         }else return "No encontramos el usuario"
+    },
+    newEvolucion: async (data) => {
+        const client = await Client.findByPk(data.clientId)
+        const evolucion = await Evolucion.create(data)
+        await client.addEvolucion(evolucion)
+        return "Exitoso"
     }
 }

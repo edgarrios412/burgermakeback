@@ -6,9 +6,21 @@ module.exports = (sequelize) => {
       primaryKey:true,
       autoIncrement:true,
     },
-    role: {
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: true,
+    },
+    time: {
       type: DataTypes.STRING,
       allowNull: true,
-    }
+    },
+    evolucion: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    abono: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
   },{timestamps:false});
 };
