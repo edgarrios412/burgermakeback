@@ -165,6 +165,14 @@ module.exports = (sequelize) => {
     date:{
       type: DataTypes.DATEONLY,
       allowNull: true,
+    },
+    ulpro:{
+      type: DataTypes.DATEONLY,
+      allowNull: true,
+    },
+    proxci:{
+      type: DataTypes.DATEONLY,
+      allowNull: true,
     }
   },{timestamps:false});
 };
