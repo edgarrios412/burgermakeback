@@ -14,6 +14,7 @@ module.exports = (sequelize) => {
     role: {
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue:1,
     },
     name:{
       type: DataTypes.STRING,
@@ -34,6 +35,7 @@ module.exports = (sequelize) => {
     balance:{
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue:0,
     },
     pin:{
       type: DataTypes.INTEGER,
