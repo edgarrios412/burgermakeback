@@ -28,29 +28,16 @@ module.exports = {
         return false
     },
     putUser: async (data) => {
-        let user;
-        if(data.newpass){
-            user = await User.findOne({
-                where:{
-                    id:data.id,
-                    password:data.oldpass
-                }
-            })
-        }else{
-            user = await User.findOne({
-                where:{
-                    id:data.id,
-                    // password:data.oldpass
-                }
-            })
-        }
+        const user = await User.findOne({where:{
+            id: data.id
+        }})
         if(user){
-            user.password = data.newpass
-            user.image = data.image
-            user.save()
-            return "Contraseña actualizada"
-        }
-        return "Contraseña anterior invalida"
+            for (const key in data) {
+                    user[key] = data[key];
+              }
+            await user.save()
+            return user
+        }else return "No encontramos el usuario"
     },
     getUsers: async () => {
         const users = await User.findAll()
