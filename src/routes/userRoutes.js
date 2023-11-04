@@ -1,12 +1,22 @@
 const {Router} = require("express")
 const userRoutes = Router()
-const {newUser, verifyUser, authUser, putUser, getUsers} = require("../controllers/userController")
+const {newUser, verifyUser, authUser, putUser, getUsers, getUserById} = require("../controllers/userController")
 
 userRoutes.get("/", async (req,res) => {
     try{
         const users = await getUsers()
         res.json(users)
 
+    }
+    catch(error){
+        console.log(error)
+    }
+})
+
+userRoutes.get("/:id", async (req,res) => {
+    try{
+        const users = await getUserById(req.params.id)
+        res.json(users)
     }
     catch(error){
         console.log(error)

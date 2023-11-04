@@ -55,5 +55,9 @@ module.exports = {
     getUsers: async () => {
         const users = await User.findAll()
         return users
+    },
+    getUserById: async (userid) => {
+        const users = await User.findOne({where:{id:userid}})
+        return users
     }
 }
