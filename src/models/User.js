@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     balance:{
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
     pin:{
