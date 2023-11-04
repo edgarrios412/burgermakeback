@@ -1,15 +1,15 @@
-const {Client, Evolucion} = require("../db")
+const {Client, Order} = require("../db")
 
 module.exports = {
     getClients: async () => {
-        const clients = await Client.findAll({include: Evolucion})
+        const clients = await Client.findAll({include: Order})
         return clients
     },
     getClientId: async (data) => {
         const client = await Client.findOne({where:{
             id:data
         },
-        include: Evolucion
+        include: Order
         })
         return client
     },

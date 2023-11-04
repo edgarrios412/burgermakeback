@@ -1,6 +1,6 @@
 const {Router} = require("express")
 const userRoutes = Router()
-const {newUser, verifyUser, authUser, putUser, getUsers, getUserById} = require("../controllers/userController")
+const {newUser, verifyUser, authUser, putUser, getUsers, getUserById, newOrder} = require("../controllers/userController")
 
 userRoutes.get("/", async (req,res) => {
     try{
@@ -59,6 +59,15 @@ userRoutes.put("/", async (req,res) => {
     res.json({users:edit})
     }
     catch(error){
+        console.log(error)
+    }
+})
+
+userRoutes.post("/order", async (req,res) => {
+    try{
+        const response = await newOrder(req.body)
+        res.json({status:response})
+    }catch(error){
         console.log(error)
     }
 })

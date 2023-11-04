@@ -1,4 +1,4 @@
-const {User} = require("../db")
+const {User, Order} = require("../db")
 const jwt = require("jsonwebtoken")
 
 module.exports = {
@@ -57,7 +57,13 @@ module.exports = {
         return users
     },
     getUserById: async (userid) => {
-        const users = await User.findOne({where:{id:userid}})
+        const users = await User.findOne({where:{id:userid}, include:Order})
         return users
+    },
+    newOrder: async (data) => {
+        const user = await User.findByPk(data.userId)
+        const order = await Order.create(data)
+        await user.addOrder(order)
+        return "Exitoso"
     }
 }
