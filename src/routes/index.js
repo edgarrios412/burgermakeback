@@ -4,6 +4,6 @@ const clientRoutes = require("./clientRoutes")
 const indexRoutes = Router()
 
 indexRoutes.use("/user",userRoutes)
-indexRoutes.use("/client",clientRoutes)
+indexRoutes.use("/order",clientRoutes)
 
 module.exports = indexRoutes
