@@ -11,10 +11,9 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     ingredients: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
       allowNull: true,
-    }
-    ,
+    },
     date: {
       type: DataTypes.STRING,
       allowNull: true,
